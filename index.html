@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inicio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-dark-grey.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="mystyles.css">
+        <script src="control.js"></script>
+    </head>
+    <body background="mofles10.jpg">
+        <div class="w3-top">
+        <ul id= "navbartop" class="w3-navbar w3-theme ">
+            <li class="child w3-round"><i><img src="icono.png" alt="Icono" style="width:104px;height:58px;"></i></li>
+            <li class="child w3-round">
+              <a href="#" id="btnInventarioNavBarTop" >Inventario</a>
+            </li>
+            <li class="w3-hide-small child w3-round">
+                <a href="#" id="btnOrdenNavBarTop" >Orden de Trabajo</a>
+            </li>
+            <li class="child w3-round">
+                <a href="#" id="btnNotaGNavBarTop">Nota de Garantia</a>
+            </li>
+            <li class="w3-hide-small child w3-round">
+                <a href="#" id="btnNotaVNavBarTop" >Nota de Venta</a>
+            </li>
+        </ul>
+        </div>
+        <br><br><br>
+        <div id="Manejo de Inventario" class="w3-container city ">
+            <h2>Inventario</h2>   
+            <div id="tableDiv" class="w3-responsive w3-animate-opacity">
+                <h4>Buscar Producto</h4>
+                <input type="button" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple w3-margin-center" id="btnAgregar" name="Agregar" value="Agregar Producto" onclick="document.getElementById('id01').style.display='block'">
+                <input id="search1" type="text" name="search" placeholder="Buscar.." onkeyup="myFunction()">  
+                <div id="otherTableDiv" style= "overflow-x:auto;">
+                    <table class = "w3-table w3-hoverable mytable" id="mytable">
+                        <tr class="w3-theme-l1 w3-responsive w3-animate-opacity">
+                            <th >Nombre</th>
+                            <th>Cantidad</th> 
+                            <th>Ultima Edicion</th>
+                            <th>Remover</th>
+                            <th>Editar</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <!-- hidden until shown content-->
+    <!--Modal AlertBox  -->
+        <div id="AlertBox" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-8 ">
+                  <header class="w3-container w3-theme-l1">
+                    <span onclick="document.getElementById('AlertBox').style.display='none'"
+                    class="w3-closebtn">&times;</span>
+                    <h2>Alerta</h2>
+                  </header>
+                    <div class="w3-container">
+                            <p>El producto se Agrego Exitosamente. Deseas agregar otro o salir?</p>
+                            <input id="btnAlert1" type="button" value="Agregar Otro" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple btnmodal">
+                            <input id="btnAlert2" type="button" value="Salir" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple btnmodal" onclick="location.reload()">
+                    </div>
+             </div>
+        </div>
+     <!-- Fin Modal AlertBox -->
+
+    <!--        Modal Agregar Producto-->
+        <div  id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-8 ">
+              <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-closebtn">&times;</span>
+                <h2>Agregar un Producto Nuevo</h2>
+              </header>
+              <div class="w3-container">
+                <p>Nombre del Producto</p>
+                <input id="nombreProductoAgregar" type="text" class="w3-input modalinput">
+                <p>Cantidad</p>
+                <input id="cantidadProductoAgregar" type="number" class="w3-input modalinput" min="1">
+                  <div class="button-wrapper">
+
+                    <input id="btnAceptarAgregar" type="button" value="Aceptar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple btnmodal">
+                    <input id="btnCancelarModal" type="button" value="Cancelar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple btnmodal" onclick="document.getElementById('id01').style.display='none'">
+                    </div>
+                </div>
+              <footer class="w3-container w3-theme-l2 footmodal">
+                <p>Modal Footer</p>
+              </footer>
+            </div>
+        </div>
+    <!--        Fin Modal Agregar Producto-->
+    <!--        Modal Remover Producto-->
+        <div id="removerProducto" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-8 ">
+              <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('removerProducto').style.display='none'"
+                class="w3-closebtn">&times;</span>
+                <h2>Seguro?</h2>
+                  <p>Estas Seguro que quieres remover el siguiente producto?</p>
+              </header>
+              <div class="w3-container">
+                <p class="w3-theme-l2">Nombre del Producto: </p>
+                <p id="nomProductoRemover"></p>
+                <p class="w3-theme-l2">Cantidad: </p>
+                <p id="canProductoRemover"></p>
+               <div class="button-wrapper">
+                     <input id="btnAceptarRemover" type="button" value="Aceptar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-brown w3-ripple w3-margin-center btnmodal" >
+                    <input id="btnCancelarModal" type="button" value="Cancelar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-brown w3-ripple w3-margin-center btnmodal" onclick="document.getElementById('removerProducto').style.display='none'">
+                  </div>
+              </div>
+              <footer class="w3-container w3-theme-l2 footmodal">
+                <p>r</p>
+
+              </footer>
+            </div>
+          </div>
+    <!--        Fin Modal Remover Producto-->
+        <!--        Modal Editar Producto-->
+        <div id="editarProducto" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-8 ">
+              <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('editarProducto').style.display='none'"
+                class="w3-closebtn">&times;</span>
+                <h2>Editar Producto</h2>
+              </header>
+              <div class="w3-container">
+                <p class="w3-theme-l2">Nombre del Producto: </p>
+                <input id="nombreProductoEditar" type="text" class="w3-input modalinput">
+                <p class="w3-theme-l2">Cantidad: </p>
+                <input id="cantidadProductoEditar" type="number" style="margin-bottom:10px;" class="cantidad" disabled>
+                <img src="plussign.png" alt="Mountain View" style="width:30px;height:30px;;">
+               <input id="cantidadMasEditar" type="number" style="margin-bottom:10px;" class="cantidad" min="1">
+                <div class="button-wrapper"> 
+                    <input id="btnAceptarEditar" type="button" value="Aceptar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-grey w3-ripple w3-margin-center btnmodal">
+
+                    <input id="btnCancelarModal" type="button" value="Cancelar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-grey w3-ripple w3-margin-center btnmodal" onclick="document.getElementById('editarProducto').style.display='none'">
+                </div>
+              </div>
+              <footer class="w3-container w3-theme-l2 footmodal">
+                <p></p>
+              </footer>
+            </div>
+          </div>
+    <!--        Fin Modal Editar Producto-->
+
+    <!--  ***************************************************   ORDEN DE TRABAJO   ********************************-->
+        <div id="OrdenTrabajo" class="w3-container w3-row city">
+            <h2>Orden de Trabajo</h2>
+            <div class="w3-panel w3-col s3 w3-round-xlarge w3-theme-l1 mycolum1">
+                <div>
+                    <p>....SomeText....</p>
+                    <button id="btnCrearOrden" class="w3-btn w3-light-grey w3-hover-dark-grey" >Crear Orden</button>
+                </div>
+
+                <h3>Actualizar Oden</h3>
+                <p>....SomeText....</p>
+                <h3>Eliminar Oden</h3>
+                <p>....SomeText....</p>
+                <h3>Imprimir Oden</h3>
+                <p>....SomeText....</p>
+            </div>
+            <div class="w3-panel w3-col s8 w3-round-xlarge w3-theme-l1 mycolum2">
+                <h3>Crear Oden</h3>
+                  <p>Tijuana</p>
+                  <p id="fechaP">Fecha</p>
+            </div>
+     <!--   ~~~~~~~~Modal Crear Orden~~~~~~~~~ -->
+            <div id="crearOrdenTrabajo" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-8 ">
+                    <header class="w3-container w3-theme-l1">
+                        <span onclick="document.getElementById('crearOrdenTrabajo').style.display='none'" class="w3-closebtn">&times;</span>
+                        <h3 class="myheader" >Crear Nueva Orden de Trabajo </h3>
+                    </header>
+                    <div class="w3-container mycontainer">
+                        <div class="w3-panel w3-col s5 w3-round-xlarge w3-theme-l2 mycolum1" >
+                            <p class="mytext">Numero de Orden</p>
+                            <input type="number" class="w3-input custominput" disabled>
+                            <p class="mytext">Fecha de Recepcion:</p>
+                            <input type="date" id ="fechaRecepcionOrden"class="w3-input  custominput" disabled>
+                        </div>
+                        <div class="w3-panel w3-col s5 w3-round-xlarge  w3-theme-l2 mycolum2" >
+                            <p class="mytext">Folio</p>
+                            <input type="number" class="w3-input custominput" disabled>
+                            <p class="mytext">Fecha de Entrega:</p>
+                            <input type="date" id ="fechaEntregaOrden" class="w3-input custominput">
+                        </div>
+                        <div class="w3-panel w3-col s5 w3-round-xlarge w3-theme-l2 mycolum1" >
+                            <p class="mytext">Nombre del Cliente:</p>
+                            <input type="text" class="w3-input custominput" placeholder= "Juan Hernandez">
+                            <p class="mytext">Telefono de Cliente:</p>
+                            <input type="tel" pattern="[0-9]{10}" class="w3-input custominput" placeholder= "6648887766">
+                            <p class="mytext">Vehiculo:</p>
+                            <input type="text" class="w3-input custominput">
+                        </div>
+                        <div class="w3-panel w3-col s5 w3-round-xlarge w3-theme-l2 mycolum2" >
+                            <p class="mytext">Servicio(s):</p>
+                            <input id="servicios_usados_input" type="text" class="w3-input custominput">
+                            <p class="mytext">Productos(s) usado:</p>
+                            <input id="productos_usados_input" type="text" class="w3-input custominput">
+                            <p class="mytext">Descripcion:</p>
+                            <input type="text" class="w3-input custominput" placeholder= "Descripcion del trabajo">
+                           <p class="mytext">Observaciones:</p>
+                           <input type="text" class="w3-input custominput" placeholder= "Observaciones del Vehiculo/Trabajo">    
+                        </div>
+
+                        <div class="w3-panel w3-col s5 w3-round-xlarge w3-theme-l2 mycolum1" >
+                            <p class="mytext">Adelanto:</p>
+                            <input type="number" id = "adelantoOrdenNueva" class="w3-input myinput" placeholder= "$00.0" min="0">
+                        </div>
+                        <div class="w3-panel w3-col s5 w3-round-xlarge w3-theme-l2 mycolum2" >
+                            <p class="mytext">Restante:</p>
+                            <input type="number" id= "restanteOrdenNueva" class="w3-input myinput" placeholder= "$00.0" disabled>
+                        </div>            
+                        <div class="w3-panel w3-col s11 w3-round-xlarge w3-theme-l2 total">
+                            <p class="mytext">Total:</p>         
+                            <input type="number" id= "totalOrdenNueva" class="w3-input custominput"  placeholder= "$00.0" min="0">
+                        </div>
+                    </div> 
+                    <div class="button-wrapper"> 
+                        <input id="btnAceptarEditar" type="button" value="Guardar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple w3-margin-center btnmodal">
+                        <input id="btnCancelarModal" type="button" value="Cancelar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-dark-grey w3-ripple w3-margin-center btnmodal" onclick="document.getElementById('crearOrdenTrabajo').style.display='none'">
+                    </div>
+                </div>
+                <footer class="w3-container w3-theme-l2 footmodal">
+                    <p></p>
+                </footer>
+            </div>
+        </div>
+
+<!--        MODAL PRODUCTOS A USAR-->
+                <div id="productos_usar_modal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-8 ">
+              <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('productos_usar_modal').style.display='none'"
+                class="w3-closebtn">&times;</span>
+                <h2>Que Produtos se usaran</h2>
+              </header>
+              <div class="w3-container">
+                <p class="mytext">Producto(s):</p>
+                <div id="orden_trabajo_table_div" style= "overflow-x:auto;" >
+                    <table class = "w3-table w3-hoverable w3-card-4" id="mytable2">
+                        <tr class="w3-theme-l1 w3-responsive w3-animate-opacity">
+                            <th>*</th>
+                            <th>Nombre</th>
+                            <th>Cantidad</th> 
+                            <th>Cantidad a Usar</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="button-wrapper"> 
+                    <input id="btn_aceptar_productos_usar" type="button" value="Aceptar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-grey w3-ripple w3-margin-center btnmodal">
+
+                    <input id="btn_cancelar_productos_usar" type="button" value="Cancelar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-grey w3-ripple w3-margin-center btnmodal" onclick="document.getElementById('productos_usar_modal').style.display='none'">
+                </div>
+              </div>
+              <footer class="w3-container w3-theme-l2 footmodal">
+                <p></p>
+              </footer>
+            </div>
+          </div>
+<!--      FIN  MODAL PRODUCTOS A USAR-->
+<!--        MODAL SERVICIOS A USAR-->
+                <div id="servicios_usar_modal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-8 ">
+              <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('servicios_usar_modal').style.display='none'"
+                class="w3-closebtn">&times;</span>
+                <h2>Que Servicios se usaran</h2>
+              </header>
+              <div class="w3-container">
+                <p class="mytext">Servicios(s):</p>
+                <div id="orden_trabajo_table_div" style= "overflow-x:auto;" >
+                    <table class = "w3-table w3-hoverable w3-card-4" id="mytable3">
+                        <tr class="w3-theme-l1 w3-responsive w3-animate-opacity">
+                            <th>*</th>
+                            <th>Nombre</th>
+                            <th>Meses de Garantia</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="button-wrapper"> 
+                    <input id="btn_aceptar_productos_usar" type="button" value="Aceptar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-grey w3-ripple w3-margin-center btnmodal">
+
+                    <input id="btn_cancelar_productos_usar" type="button" value="Cancelar" class="w3-btn w3-light-grey w3-round-large w3-border w3-border-white w3-hover-grey w3-ripple w3-margin-center btnmodal" onclick="document.getElementById('servicios_usar_modal').style.display='none'">
+                </div>
+              </div>
+              <footer class="w3-container w3-theme-l2 footmodal">
+                <p></p>
+              </footer>
+            </div>
+          </div>
+<!--      FIN  MODAL SERVICIOES A USAR-->
+    <!--        Fin Orden de Trabajo-->
+        <div id="NotaGarantia" class="w3-container city">
+          <h2>Nota de Garantia</h2>
+          <div class="w3-panel w3-round-xlarge w3-theme-l1">
+                <h3>Crear Nota de Garantia</h3>
+                <p>....SomeText....</p>
+                <h3>Eliminar Nota de Garantia</h3>
+                <p>....SomeText....</p>
+
+                <h3>Imprimir Nota de Garantia</h3>
+                <p>....SomeText....</p>
+            </div>
+        </div>
+        <div id="NotaVenta" class="w3-container city">
+            <h2>Nota de Venta</h2>
+            <div class="w3-panel w3-round-xlarge w3-theme-l1">
+                <h3>Crear Nota de Venta</h3>
+                <p>....SomeText....</p>
+                <h3>Editar Nota de Venta</h3>
+                <p>....SomeText....</p>
+                <h3>Imprimir Nota de Garantia</h3>
+                <p>....SomeText....</p>
+            </div>
+        </div>
+            <footer id="myFooter">
+            <div class="w3-container w3-theme-l2">
+              <h4>Mofles y Radiadores</h4>
+            </div>
+            <div class="w3-container w3-theme-l1">
+              <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+            </div>
+          </footer>
+        <!-- END MAIN -->
+
+    </body>
+</html>

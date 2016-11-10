@@ -1,0 +1,178 @@
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+.w3-sidenav a,.w3-sidenav h4 {padding: 12px;}
+.w3-navbar li a ,{
+    padding-top: 12px;
+    padding-bottom: 25px;
+}
+h3{
+    color: white;
+    
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(odd){background-color: #C1C1C1;}
+
+tr:hover {background-color: #777;}
+
+td.mytable,th.mytable{
+        
+        width: auto;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    text-align: middle;
+}
+th.mytable{
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    text-align: middle;
+}
+
+input[type="text"]{
+    word-wrap: break-word;
+}
+#mytable{
+    margin-top: 15px;
+    width: 100%;
+}
+#otherTableDiv{
+    width: 100%;
+    height: 350px;
+    overflow: scroll;
+}
+.sublabel{
+   text-underline-position: below;
+}
+#search1,#search2, #search3{
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon2.png') ;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#search1:focus ,#search2:focus,#search3:focus{
+    width: 80%;
+}
+#Manejo de Inventario, #navbartop{
+    
+}
+#id01{
+        background-image=url("mofles10.jpg");
+}
+.modalinput{
+    margin: 20px;
+    width: 95%;
+}
+#cantidad,#nombre{
+     border-radius: 4px;
+    
+}
+#cantidad{
+    margin-top: 6px
+}
+#navbartop{
+    border-bottom: 4px solid #000000;
+    padding-top: 10px;
+}
+
+#topPartInventario,{
+    padding: 20px;
+    
+}
+#botones{
+    vertical-align: middle;
+}
+/*
+.button{
+    text-align: center;
+    margin: 10px;
+    object-position: center;
+    width: 15%;
+    height: 60px;
+    vertical-align: middle;
+    
+}
+*/
+.btnmodal {    
+  vertical-align: middle;
+  display: block;
+  width: 25%;
+  margin: 0 auto;
+}
+
+
+.mytext{
+        display: block;
+        margin: 0 auto;
+}
+.mycolum1{
+    padding-top:8px;
+    padding-bottom:20px;
+    padding-left:15px;
+    padding-right:15px;
+    margin-right: 5px;
+}
+.mycolum2{
+    
+    padding-top:8px;
+    padding-bottom:20px;
+    padding-left:15px;
+    padding-right:15px;
+    margin-right: 5px;
+    margin-left: 50px;
+}
+
+.total{
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:15px;
+    padding-right:15px;
+}
+        
+.button-wrapper {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    padding: 20px;
+  vertical-align: middle;
+}
+
+.removerIcon,.editarIcon{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    vertical-align:middle;
+    
+}   
+.footmodal{
+    margin-top: 40px;
+}
+
+.custominput{
+        width: 100%;
+        border-radius: 4px;
+}
+.cantidad{
+        
+        border-radius: 4px;
+        width: 45%;
+}
+
+.mycontainer{
+      padding-left: 70px;
+}
+.table2Input{
+
+}
+.myheader{
+        vertical-align: middle;
+        object-position: center;
+        text-align: center;
+}
